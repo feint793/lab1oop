@@ -37,11 +37,13 @@ namespace nature {
 	shape* shape::In(ifstream& ifst) {
 		shape* sp;
 		string Type;
+		string Place_P;
 		getline(ifst, Type);
 		int k = stoi(Type);
 		switch (k) {
 		case 1:
 			sp = new trees;
+
 			break;
 		case 2:
 			sp = new shrubs;
@@ -51,7 +53,24 @@ namespace nature {
 		}
 		ifst.getline(sp->m_Name, 50);
 		sp->InData(ifst);
-		//ifst >> sp->growth;
+		getline(ifst, Place_P);
+		int Pass = stoi(Place_P);
+		switch (Pass) {
+		case 1:
+			sp->area = shape::place::Forest;
+			break;
+		case 2:
+			sp->area = shape::place::Garden;
+			break;
+		case 3:
+			sp->area = shape::place::Steppe;
+			break;
+		case 4:
+			sp->area = shape::place::Tundra;
+			break;
+		default:
+			return 0;
+		}
 		return sp;
 	}
 
@@ -100,6 +119,8 @@ namespace nature {
 		default:
 			cout << "Error in InShrubs func!\n";
 		}
+		
+		
 	}
 
 	// Вывод параметров кустарника (бывшая shrub_out)
@@ -147,6 +168,22 @@ namespace nature {
 			cout << "Error in OutShrubs func!\n";
 		}
 
+		switch (this->area) {
+		case shape::place::Forest:
+			ofst << "Grows in a forest" << endl;
+			break;
+		case shape::place::Garden:
+			ofst << "Grows in a garden" << endl;
+			break;
+		case shape::place::Steppe:
+			ofst << "Grows in a steppe" << endl;
+			break;
+		case shape::place::Tundra:
+			ofst << "Grows in a tundra" << endl;
+			break;
+		default:
+			ofst << "Incorrect area!" << endl;
+		}
 	}
 
 	// Ввод параметров дерева (бывшая tree_in)
@@ -154,6 +191,7 @@ namespace nature {
 		string Age;
 		getline(ifst, Age);
 		this->m_Age = stol(Age);
+		
 		//ifst.getline(this->x, 100);
 		//ifst.getline(this->y, 100);
 		//shape::InData(ifst);
@@ -161,7 +199,25 @@ namespace nature {
 
 	// Вывод параметров дерева (бывшая tree_out)
 	void trees::Out(ofstream& ofst) {
-		ofst << "It is tree: " << this->m_Name << "\nAge: " << this->m_Age << "\n";
+		ofst << "It is tree: " << this->m_Name << "\nAge: " << this->m_Age <<"\n";
+
+		
+		switch (this->area) {
+		case shape::place::Forest:
+			ofst << "Grows in a forest" << endl;
+			break;
+		case shape::place::Garden:
+			ofst << "Grows in a garden" << endl;
+			break;
+		case shape::place::Steppe:
+			ofst << "Grows in a steppe" << endl;
+			break;
+		case shape::place::Tundra:
+			ofst << "Grows in a tundra" << endl;
+			break;
+		default:
+			ofst << "Incorrect area!" << endl;
+		}
 	}
 	// Ввод параметров фигуры
 	/*void shape::InData(ifstream& ifst) {
