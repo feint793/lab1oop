@@ -51,6 +51,15 @@ namespace nature {
 			void Out(ofstream& ofst); // вывод
 			shrubs() {} // создание без инициализации.
 		};
+	class flowers : public shape {
+		enum Type { Wild, Home };
+		Type kind;
+	public:
+		// переопределяем интерфейс класса
+		void InData(ifstream& ifst); // ввод
+		void Out(ofstream& ofst); // вывод
+		flowers() {} // создание без инициализации.
+	};
 
 } 
-#endif
+#endif

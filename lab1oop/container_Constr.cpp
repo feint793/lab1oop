@@ -46,6 +46,9 @@ namespace nature {
 		case 2:
 			sp = new shrubs;
 			break;
+		case 3:
+			sp = new flowers;
+			break;
 		default:
 			return 0;
 		}
@@ -53,6 +56,35 @@ namespace nature {
 		sp->InData(ifst);
 		//ifst >> sp->growth;
 		return sp;
+	}
+	void flowers::InData(ifstream& ifst) {
+		string Num;
+		getline(ifst, Num);
+		int Pass = stoi(Num);
+		switch (Pass) {
+		case 1:
+			this->kind = flowers::Type::Wild;
+			break;
+		case 2:
+			this->kind = flowers::Type::Home;
+			break;
+		default:
+			cout << "Error\n";
+		}
+	}
+	void flowers::Out(ofstream& ofst) {
+		ofst << "It is flower: " << this->m_Name << "\n";
+
+		switch (this->kind) {
+		case flowers::Type::Wild:
+			ofst << "Type: Home\n";
+			break;
+		case flowers::Type::Home:
+			ofst << "Type: Wild\n";
+			break;
+		default:
+			cout << "Error\n";
+		}
 	}
 
 	// Ввод параметров кустарника ( бывшая shrub_in)
@@ -105,7 +137,7 @@ namespace nature {
 	// Вывод параметров кустарника (бывшая shrub_out)
 	void shrubs::Out(ofstream& ofst) {
 		ofst << "It is Shrub: " << this->m_Name << "\n";
-		
+
 		switch (this->flowering) {
 		case shrubs::Month::Jan:
 			ofst << "Month: January\n";
@@ -171,4 +203,4 @@ namespace nature {
 	void shape::Out(ofstream& ofst) {
 		ofst << "angle = " << growth;
 	}*/
-} 
+}
