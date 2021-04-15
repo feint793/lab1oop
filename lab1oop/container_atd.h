@@ -16,6 +16,7 @@ namespace nature {
 		static shape* In(ifstream& ifst);
 		virtual void InData(ifstream& ifst) = 0; // ввод
 		virtual void Out(ofstream& ofst) = 0; // вывод
+		virtual void OutTrees(ofstream& ofst);
 
 	};
 		/////////////////// ѕростейший контейнер на основе одномерного массива
@@ -26,6 +27,7 @@ namespace nature {
 		public:
 			void In(ifstream &ifst); // ввод
 			void Out(ofstream &ofst); // вывод
+			void OutTrees(ofstream& ofst);
 			void Clear(); // очистка контейнера от фигур
 			container(); // инициализаци€ контейнера
 			~container() { Clear(); } // утилизаци€ контейнера
@@ -38,6 +40,7 @@ namespace nature {
 			// переопредел€ем интерфейс класса
 			void InData(ifstream& ifst); // ввод
 			void Out(ofstream& ofst); // вывод
+			void OutTrees(ofstream& ofst);
 			trees() {} // создание без инициализации.
 		};
 	
@@ -53,4 +56,4 @@ namespace nature {
 		};
 
 } 
-#endif
+#endif

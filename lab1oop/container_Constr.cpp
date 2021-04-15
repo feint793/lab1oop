@@ -32,6 +32,13 @@ namespace nature {
 			cont[i]->Out(ofst);
 		}
 	}
+	void container::OutTrees(ofstream& ofst) {
+		ofst << "Only trees: " << endl;
+		for (int i = 0; i < len; i++) {
+			ofst << i << ": ";
+			cont[i]->OutTrees(ofst);
+		}
+	}
 
 	// ¬вод параметров обобщенного объекта ( бывша€ shape_in)
 	shape* shape::In(ifstream& ifst) {
@@ -53,6 +60,9 @@ namespace nature {
 		sp->InData(ifst);
 		//ifst >> sp->growth;
 		return sp;
+	}
+	void shape::OutTrees(ofstream& ofst) {
+		ofst << "Unknown" << endl; // пуста€ строка 
 	}
 
 	// ¬вод параметров кустарника ( бывша€ shrub_in)
@@ -171,4 +181,8 @@ namespace nature {
 	void shape::Out(ofstream& ofst) {
 		ofst << "angle = " << growth;
 	}*/
+
+	void trees::OutTrees(ofstream& ofst) {
+		Out(ofst);
+	}
 } 
