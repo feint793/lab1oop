@@ -16,6 +16,7 @@ namespace nature {
 		static shape* In(ifstream& ifst);
 		virtual void InData(ifstream& ifst) = 0; // ввод
 		virtual void Out(ofstream& ofst) = 0; // вывод
+		virtual int Count_letters() = 0;
 
 	};
 		/////////////////// Простейший контейнер на основе одномерного массива
@@ -38,6 +39,7 @@ namespace nature {
 			// переопределяем интерфейс класса
 			void InData(ifstream& ifst); // ввод
 			void Out(ofstream& ofst); // вывод
+			int Count_letters();
 			trees() {} // создание без инициализации.
 		};
 	
@@ -49,8 +51,9 @@ namespace nature {
 			// переопределяем интерфейс класса
 			void InData(ifstream& ifst); // ввод
 			void Out(ofstream& ofst); // вывод
+			int Count_letters();
 			shrubs() {} // создание без инициализации.
 		};
 
 } 
-#endif
+#endif

@@ -30,6 +30,7 @@ namespace nature {
 		for (int i = 0; i < len; i++) {
 			ofst << i << ": ";
 			cont[i]->Out(ofst);
+			ofst << "Count of consonants: " << cont[i]->Count_letters() << endl;
 		}
 	}
 
@@ -171,4 +172,36 @@ namespace nature {
 	void shape::Out(ofstream& ofst) {
 		ofst << "angle = " << growth;
 	}*/
+
+	int trees::Count_letters() {
+		int letter = 0;
+		int i = 0;
+		char alphabet[] = "bcdfghjklmnpqrstvwxz";
+		//int lent = alphabet.length();
+
+		while (this->m_Name[i] != '\0')
+		{
+			if (strchr(alphabet, this->m_Name[i])) {
+				letter++;
+			}
+			i++;
+		}
+		return letter;
+	}
+
+	int shrubs::Count_letters() {
+		int letter = 0;
+		int i = 0;
+		char alphabet[] = "bcdfghjklmnpqrstvwxz";
+		//int lent = alphabet.length();
+
+		while (this->m_Name[i] != '\0')
+		{
+			if (strchr(alphabet, this->m_Name[i])) {
+				letter++;
+			}
+			i++;
+		}
+		return letter;
+	}
 } 
