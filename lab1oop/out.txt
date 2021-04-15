@@ -1,0 +1,13 @@
+Filled container. 
+Container contents 5 elements.
+0: It is tree: elka
+Age: 33
+1: It is Shrub: papor
+Month: February
+2: It is tree: dub
+Age: 120
+3: It is tree: bereza
+Age: 44
+4: It is Shrub: malina
+Month: April
+Now the container is empty. 

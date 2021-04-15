@@ -1,0 +1,15 @@
+1
+elka
+33
+2
+papor
+2
+1
+dub
+120
+1
+bereza
+44
+2
+malina
+4
