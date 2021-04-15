@@ -34,6 +34,18 @@ namespace nature {
 		}
 	}
 
+	void container::Sort() {
+		for (int i = 0; i < len - 1; i++) {
+			for (int j = i + 1; j < len; j++) {
+				if (cont[i]->Compare(*cont[j])) {
+					shape* tmp = cont[i];
+					cont[i] = cont[j];
+					cont[j] = tmp;
+				}
+			}
+		}
+	}
+
 	// ¬вод параметров обобщенного объекта ( бывша€ shape_in)
 	shape* shape::In(ifstream& ifst) {
 		shape* sp;
@@ -54,6 +66,9 @@ namespace nature {
 		sp->InData(ifst);
 		//ifst >> sp->growth;
 		return sp;
+	}
+	bool shape::Compare(shape& other) {
+		return Count_letters() < other.Count_letters();
 	}
 
 	// ¬вод параметров кустарника ( бывша€ shrub_in)

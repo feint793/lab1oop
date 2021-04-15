@@ -1,18 +1,18 @@
 Filled container. 
 Container contents 5 elements.
-0: It is tree: elka
-Age: 33
-Count of consonants: 2
-1: It is Shrub: papor
+0: It is Shrub: papor
 Month: February
 Count of consonants: 3
-2: It is tree: dub
-Age: 120
-Count of consonants: 2
-3: It is tree: bereza
+1: It is tree: bereza
 Age: 44
 Count of consonants: 3
-4: It is Shrub: malina
+2: It is Shrub: malina
 Month: April
 Count of consonants: 3
+3: It is tree: elka
+Age: 33
+Count of consonants: 2
+4: It is tree: dub
+Age: 120
+Count of consonants: 2
 Now the container is empty. 
