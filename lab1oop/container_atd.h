@@ -17,8 +17,6 @@ namespace nature {
 		virtual void InData(ifstream& ifst) = 0; // ввод
 		virtual void Out(ofstream& ofst) = 0; // вывод
 		virtual void OutTrees(ofstream& ofst);
-		virtual int Count_letters() = 0;
-		bool Compare(shape& other);
 
 	};
 		/////////////////// Простейший контейнер на основе одномерного массива
