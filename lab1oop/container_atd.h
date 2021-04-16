@@ -17,6 +17,8 @@ namespace nature {
 		virtual void InData(ifstream& ifst) = 0; // ввод
 		virtual void Out(ofstream& ofst) = 0; // вывод
 		virtual void OutTrees(ofstream& ofst);
+		virtual int Count_letters() = 0;
+		bool Compare(shape& other);
 
 	};
 		/////////////////// ѕростейший контейнер на основе одномерного массива
@@ -29,6 +31,7 @@ namespace nature {
 			void Out(ofstream &ofst); // вывод
 			void OutTrees(ofstream& ofst);
 			void Clear(); // очистка контейнера от фигур
+			void Sort();
 			container(); // инициализаци€ контейнера
 			~container() { Clear(); } // утилизаци€ контейнера
 	};
@@ -41,6 +44,7 @@ namespace nature {
 			void InData(ifstream& ifst); // ввод
 			void Out(ofstream& ofst); // вывод
 			void OutTrees(ofstream& ofst);
+			int Count_letters();
 			trees() {} // создание без инициализации.
 		};
 	
@@ -52,6 +56,7 @@ namespace nature {
 			// переопредел€ем интерфейс класса
 			void InData(ifstream& ifst); // ввод
 			void Out(ofstream& ofst); // вывод
+			int Count_letters();
 			shrubs() {} // создание без инициализации.
 		};
 

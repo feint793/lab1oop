@@ -30,8 +30,22 @@ namespace nature {
 		for (int i = 0; i < len; i++) {
 			ofst << i << ": ";
 			cont[i]->Out(ofst);
+			ofst << "Count of consonants: " << cont[i]->Count_letters() << endl;
 		}
 	}
+
+	void container::Sort() {
+		for (int i = 0; i < len - 1; i++) {
+			for (int j = i + 1; j < len; j++) {
+				if (cont[i]->Compare(*cont[j])) {
+					shape* tmp = cont[i];
+					cont[i] = cont[j];
+					cont[j] = tmp;
+				}
+			}
+		}
+	}
+
 	void container::OutTrees(ofstream& ofst) {
 		ofst << "Only trees: " << endl;
 		for (int i = 0; i < len; i++) {
@@ -61,6 +75,11 @@ namespace nature {
 		//ifst >> sp->growth;
 		return sp;
 	}
+
+	bool shape::Compare(shape& other) {
+		return Count_letters() < other.Count_letters();
+	}
+
 	void shape::OutTrees(ofstream& ofst) {
 		ofst << "Unknown" << endl; // пустая строка 
 	}
@@ -184,5 +203,37 @@ namespace nature {
 
 	void trees::OutTrees(ofstream& ofst) {
 		Out(ofst);
+	}
+
+	int trees::Count_letters() {
+		int letter = 0;
+		int i = 0;
+		char alphabet[] = "bcdfghjklmnpqrstvwxz";
+		//int lent = alphabet.length();
+
+		while (this->m_Name[i] != '\0')
+		{
+			if (strchr(alphabet, this->m_Name[i])) {
+				letter++;
+			}
+			i++;
+		}
+		return letter;
+	}
+
+	int shrubs::Count_letters() {
+		int letter = 0;
+		int i = 0;
+		char alphabet[] = "bcdfghjklmnpqrstvwxz";
+		//int lent = alphabet.length();
+
+		while (this->m_Name[i] != '\0')
+		{
+			if (strchr(alphabet, this->m_Name[i])) {
+				letter++;
+			}
+			i++;
+		}
+		return letter;
 	}
 } 
