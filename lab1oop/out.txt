@@ -1,6 +1,8 @@
 Filled container. 
-Container contents 5 elements.
-0: It is Shrub: papor
+Container contents 6 elements.
+0: It is tree: elka
+Age: 33
+1: It is Shrub: papor
 Month: February
 Grows in a garden
 Count of consonants: 3
