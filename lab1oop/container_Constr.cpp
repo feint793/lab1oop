@@ -324,4 +324,20 @@ namespace nature {
 		}
 		return letter;
 	}
+
+	int flowers::Count_letters() {
+		int letter = 0;
+		int i = 0;
+		char alphabet[] = "bcdfghjklmnpqrstvwxz";
+		//int lent = alphabet.length();
+
+		while (this->m_Name[i] != '\0')
+		{
+			if (strchr(alphabet, this->m_Name[i])) {
+				letter++;
+			}
+			i++;
+		}
+		return letter;
+	}
 } 

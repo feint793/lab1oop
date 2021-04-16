@@ -61,6 +61,7 @@ namespace nature {
 			int Count_letters();
 			shrubs() {} // создание без инициализации.
 		};
+
 	class flowers : public shape {
 		enum Type { Wild, Home };
 		Type kind;
@@ -68,6 +69,7 @@ namespace nature {
 		// переопределяем интерфейс класса
 		void InData(ifstream& ifst); // ввод
 		void Out(ofstream& ofst); // вывод
+		int Count_letters();
 		flowers() {} // создание без инициализации.
 	};
 

@@ -1,8 +1,6 @@
 Filled container. 
 Container contents 6 elements.
-0: It is tree: elka
-Age: 33
-1: It is Shrub: papor
+0: It is Shrub: papor
 Month: February
 Grows in a garden
 Count of consonants: 3
@@ -22,6 +20,9 @@ Count of consonants: 2
 Age: 120
 Grows in a tundra
 Count of consonants: 2
+5: It is flower: rose
+Type: Home
+Count of consonants: 2
 
 Only trees: 
 Only trees: 
@@ -36,4 +37,5 @@ Grows in a steppe
 4: It is tree: dub
 Age: 120
 Grows in a tundra
+5: Unknown
 Now the container is empty. 
