@@ -11,15 +11,13 @@ namespace nature {
 	class shape {
 	public:
 		//char area[100];
-		char m_Name[50];
 		enum place { Forest, Garden, Steppe, Tundra };
 		place area;
+		char m_Name[50];
 		// иденитфикация, порождение и ввод объектов из потока
 		static shape* In(ifstream& ifst);
 		virtual void InData(ifstream& ifst) = 0; // ввод
 		virtual void Out(ofstream& ofst) = 0; // вывод
-		
-
 		virtual void OutTrees(ofstream& ofst);
 		virtual int Count_letters() = 0;
 		bool Compare(shape& other);
@@ -63,6 +61,7 @@ namespace nature {
 			int Count_letters();
 			shrubs() {} // создание без инициализации.
 		};
-
+	
 } 
 #endif
+

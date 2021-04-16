@@ -1,29 +1,37 @@
 Filled container. 
 Container contents 5 elements.
-0: It is tree: elka
-Age: 33
-Count of consonants: 2
-1: It is Shrub: papor
+0: It is Shrub: papor
 Month: February
+Grows in a garden
 Count of consonants: 3
-2: It is tree: dub
-Age: 120
-Count of consonants: 2
-3: It is tree: bereza
+1: It is tree: bereza
 Age: 44
+Grows in a garden
 Count of consonants: 3
-4: It is Shrub: malina
+2: It is Shrub: malina
 Month: April
+Grows in a forest
 Count of consonants: 3
+3: It is tree: elka
+Age: 33
+Grows in a steppe
+Count of consonants: 2
+4: It is tree: dub
+Age: 120
+Grows in a tundra
+Count of consonants: 2
 
 Only trees: 
 Only trees: 
-0: It is tree: elka
-Age: 33
-1: Unknown
-2: It is tree: dub
-Age: 120
-3: It is tree: bereza
+0: Unknown
+1: It is tree: bereza
 Age: 44
-4: Unknown
+Grows in a garden
+2: Unknown
+3: It is tree: elka
+Age: 33
+Grows in a steppe
+4: It is tree: dub
+Age: 120
+Grows in a tundra
 Now the container is empty. 
