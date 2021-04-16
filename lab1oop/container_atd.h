@@ -26,9 +26,10 @@ namespace nature {
 		/////////////////// ѕростейший контейнер на основе одномерного массива
 	class container {
 		enum { max_len = 100 }; // максимальна€ длина
-		int len; // текуща€ длина
+		
 		shape *cont[max_len];
 		public:
+			int len; // текуща€ длина
 			void In(ifstream &ifst); // ввод
 			void Out(ofstream &ofst); // вывод
 			void OutTrees(ofstream& ofst);

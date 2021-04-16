@@ -73,10 +73,25 @@ namespace nature {
 			sp = new flowers;
 			break;
 		default:
+			char Junk[50]; //для мусора
+			ifst.getline(Junk, 50); //Здесь - имя
+			ifst.getline(Junk, 50); //Здесь - уникальная характеристика
+			ifst.getline(Junk, 50); //Здесь - место произрастания
 			return 0;
 		}
-		ifst.getline(sp->m_Name, 50);
-		sp->InData(ifst);
+		string Line; //Временное решение на случай переполнения
+		getline(ifst, Line);
+		if (Line.length() < 50) { //Проверка на переполнение - если длина Line < 100
+			strcpy_s(sp->m_Name, 50, Line.c_str());
+			sp->InData(ifst);	
+		}
+		else
+		{
+			Line.resize(99);
+			strcpy_s(sp->m_Name, 50, Line.c_str());
+			sp->InData(ifst);
+		}
+		
 		getline(ifst, Place_P);
 		int Pass = stoi(Place_P);
 		switch (Pass) {
@@ -109,7 +124,7 @@ namespace nature {
 			this->kind = flowers::Type::Home;
 			break;
 		default:
-			cout << "Error\n";
+			cout << "Unknown type\n";
 		}
 	}
 	void flowers::Out(ofstream& ofst) {
@@ -140,46 +155,47 @@ namespace nature {
 		string Num;
 		getline(ifst, Num);
 		int Pass = stoi(Num);
-		switch (Pass) {
-		case 1:
-			this->flowering = shrubs::Month::Jan;
-			break;
-		case 2:
-			this->flowering = shrubs::Month::Feb;
-			break;
-		case 3:
-			this->flowering = shrubs::Month::Mar;
-			break;
-		case 4:
-			this->flowering = shrubs::Month::Apr;
-			break;
-		case 5:
-			this->flowering = shrubs::Month::May;
-			break;
-		case 6:
-			this->flowering = shrubs::Month::Jun;
-			break;
-		case 7:
-			this->flowering = shrubs::Month::Jul;
-			break;
-		case 8:
-			this->flowering = shrubs::Month::Aug;
-			break;
-		case 9:
-			this->flowering = shrubs::Month::Sep;
-			break;
-		case 10:
-			this->flowering = shrubs::Month::Oct;
-			break;
-		case 11:
-			this->flowering = shrubs::Month::Nov;
-			break;
-		case 12:
-			this->flowering = shrubs::Month::Dec;
-			break;
-		default:
-			cout << "Error in InShrubs func!\n";
-		}
+			switch (Pass) {
+			case 1:
+				this->flowering = shrubs::Month::Jan;
+				break;
+			case 2:
+				this->flowering = shrubs::Month::Feb;
+				break;
+			case 3:
+				this->flowering = shrubs::Month::Mar;
+				break;
+			case 4:
+				this->flowering = shrubs::Month::Apr;
+				break;
+			case 5:
+				this->flowering = shrubs::Month::May;
+				break;
+			case 6:
+				this->flowering = shrubs::Month::Jun;
+				break;
+			case 7:
+				this->flowering = shrubs::Month::Jul;
+				break;
+			case 8:
+				this->flowering = shrubs::Month::Aug;
+				break;
+			case 9:
+				this->flowering = shrubs::Month::Sep;
+				break;
+			case 10:
+				this->flowering = shrubs::Month::Oct;
+				break;
+			case 11:
+				this->flowering = shrubs::Month::Nov;
+				break;
+			case 12:
+				this->flowering = shrubs::Month::Dec;
+				break;
+			default:
+				cout << "Error in InShrubs func!\n";
+			}
+		
 		
 		
 	}
@@ -251,11 +267,15 @@ namespace nature {
 	void trees::InData(ifstream& ifst) {
 		string Age;
 		getline(ifst, Age);
-		this->m_Age = stol(Age);
-		
-		//ifst.getline(this->x, 100);
-		//ifst.getline(this->y, 100);
-		//shape::InData(ifst);
+		if (Age.length() < 50) {
+			this->m_Age = stol(Age);
+		}
+		else
+		{
+			Age.resize(49);
+			this->m_Age = stol(Age);
+		}
+		Age.clear();
 	}
 
 	// Вывод параметров дерева (бывшая tree_out)
