@@ -48,7 +48,9 @@ namespace nature {
 			void Out(ofstream& ofst); // вывод
 			void OutTrees(ofstream& ofst);
 			int Count_letters();
-			trees() {} // создание без инициализации.
+			trees() {
+				m_Age = 0;
+			} // создание без инициализации.
 		};
 	
 		////////////////// кустарник

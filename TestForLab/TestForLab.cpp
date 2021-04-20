@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "CppUnitTest.h"
+#include <fstream>
 #include "../lab1oop/container_atd.h"
 #include "../lab1oop/container_Constr.cpp"
 
@@ -32,9 +33,9 @@ namespace TestForLab
 			Assert::AreEqual(real_len, 0);//OK
 			c.Clear();
 		}
-		TEST_METHOD(Wisdom_In_5) //Проверка функции In для класса wisdom
+		TEST_METHOD(Shape_In_5) //Проверка функции In для класса wisdom
 		{
-			ifstream ifst("in_7_with_incorrect_keys.txt"); //В файле 5 объектов, 2 с неправильными ключами
+			ifstream ifst("in_5_with_incorrect_keys.txt"); //В файле 5 объектов, 2 с неправильными ключами
 			container c = container();
 			c.In(ifst);
 			int real_len = c.len;
@@ -44,14 +45,14 @@ namespace TestForLab
 
 		TEST_METHOD(Container_Sort_5) //Проверка функции Sort для контейнера
 		{
-			ifstream ifst("in_5.txt"); //В файле 5 объектов
-			ofstream ofst("out_5.txt");
+			ifstream ifst("in_6.txt"); //В файле 6 объектов
+			ofstream ofst("out_6.txt");
 			container c = container();
 			c.In(ifst);
 			c.Sort(); // ОК, сортировка прошла как обычно
 			c.Out(ofst);
 			int real_len = c.len;
-			Assert::AreEqual(real_len, 5); //OK
+			Assert::AreEqual(real_len, 6); //OK
 			c.Clear();
 		}
 
@@ -108,7 +109,7 @@ namespace TestForLab
 
 		TEST_METHOD(Container_OutTrees_without_objects) //Проверка функции OutTrees контейнера без деревьев
 		{
-			ifstream ifst("in_3_without_trees.txt"); //В файле 2 объектов
+			ifstream ifst("in_3_without_trees.txt"); //В файле 3 объектa
 			ofstream ofst("out_3_without_trees.txt");
 			container c = container();
 			c.In(ifst);
@@ -120,9 +121,9 @@ namespace TestForLab
 
 		TEST_METHOD(Shape_InData_OverBuf) //Проверка функции InData на поведение в случае переполнения
 		{
-			ifstream ifst("in_1_overbuf.txt"); //В файле один объект с выражением > 50 символов
+			ifstream ifst("in_1_overbuf.txt"); //В файле один объект > 50 символов
 			ofstream ofst("out_1_overbuf.txt");
-			ifstream ifst_IDEAL("in_1_overbuf_IDEAL.txt");
+			ifstream ifst_IDEAL("out_1_overbuf_IDEAL.txt");
 			container c = container();
 			c.In(ifst);
 			c.Out(ofst);
@@ -134,7 +135,7 @@ namespace TestForLab
 
 		TEST_METHOD(Shape_CountLetters_0) //Проверка функции CountLetters в случае 0 согласных
 		{
-			ifstream ifst("in_0_letters.txt"); //В выражении нет запятых
+			ifstream ifst("in_0_letters.txt"); //В выражении нет согласных
 			ofstream ofst("out_0_letters.txt");
 			ifstream ifst_IDEAL("out_0_letters_IDEAL.txt");
 			container c = container();
@@ -146,7 +147,7 @@ namespace TestForLab
 			c.Clear();
 		}
 
-		TEST_METHOD(Wisdom_CountLetters_1) //Проверка функции CountLetters в случае 1 буквы
+		TEST_METHOD(Shape_CountLetters_1) //Проверка функции CountLetters в случае 1 буквы
 		{
 			ifstream ifst("in_1_letter.txt"); //В выражении 1 буква
 			ofstream ofst("out_1_letter.txt");
@@ -169,20 +170,6 @@ namespace TestForLab
 			
 			c.Clear();//OK, цикл не начинался
 			Assert::AreEqual(c.len, 0); //OK
-		}
-
-		TEST_METHOD(OverBufForAll) //Проверка функций InData трех подклассов на поведение в случае переполнения
-		{
-			ifstream ifst("in_3_overbuf.txt"); //В файле 3 объекта с переполненными уник. хар-ми 
-			ofstream ofst("out_3_overbuf.txt");
-			ifstream ifst_IDEAL("out_3_overbuf_IDEAL.txt");
-			container c = container();
-			c.In(ifst);
-			c.Out(ofst);
-			//тут сравнение двух файлов
-			ifstream ifst_to_cmp("out_3_overbuf.txt");
-			Assert::AreEqual(Difference(ifst_to_cmp, ifst_IDEAL), 1); //OK 
-			c.Clear();
 		}
 
 		int Difference(ifstream& ifst_1, ifstream& ifst_2)

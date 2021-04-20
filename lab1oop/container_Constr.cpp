@@ -87,7 +87,7 @@ namespace nature {
 		}
 		else
 		{
-			Line.resize(99);
+			Line.resize(49);
 			strcpy_s(sp->m_Name, 50, Line.c_str());
 			sp->InData(ifst);
 		}
