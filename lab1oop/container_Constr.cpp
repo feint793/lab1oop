@@ -2,10 +2,13 @@
 #include <string>
 #include <iostream>
 #include "container_atd.h"
+
 using namespace std;
+
 namespace nature {
 	// Инициализация контейнера
 	container::container() : len(0) { }
+
 	// Очистка контейнера от элементов
 	void container::Clear() {
 		for (int i = 0; i < len; i++) {
@@ -26,11 +29,11 @@ namespace nature {
 	// Вывод содержимого контейнера
 	void container::Out(ofstream& ofst) {
 		ofst << "Container contents " << len
-			<< " elements." << endl;
+			 << " elements." << endl;
 		for (int i = 0; i < len; i++) {
 			ofst << i << ": ";
 			cont[i]->Out(ofst);
-			ofst << "Count of consonants: " << cont[i]->Count_letters() << endl;
+			ofst << "Count of consonants: " << cont[i]->CountLetters() << endl;
 		}
 	}
 
@@ -57,10 +60,10 @@ namespace nature {
 	// Ввод параметров обобщенного объекта ( бывшая shape_in)
 	shape* shape::In(ifstream& ifst) {
 		shape* sp;
-		string Type;
-		string Place_P;
-		getline(ifst, Type);
-		int k = stoi(Type);
+		string type;
+		string place;
+		getline(ifst, type);
+		int k = stoi(type);
 		switch (k) {
 		case 1:
 			sp = new trees;
@@ -73,28 +76,27 @@ namespace nature {
 			sp = new flowers;
 			break;
 		default:
-			char Junk[50]; //для мусора
-			ifst.getline(Junk, 50); //Здесь - имя
-			ifst.getline(Junk, 50); //Здесь - уникальная характеристика
-			ifst.getline(Junk, 50); //Здесь - место произрастания
+			char junk[50]; //для мусора
+			ifst.getline(junk, 50); //Здесь - имя
+			ifst.getline(junk, 50); //Здесь - уникальная характеристика
+			ifst.getline(junk, 50); //Здесь - место произрастания
 			return 0;
 		}
-		string Line; //Временное решение на случай переполнения
-		getline(ifst, Line);
-		if (Line.length() < 50) { //Проверка на переполнение - если длина Line < 100
-			strcpy_s(sp->m_Name, 50, Line.c_str());
+		string line; //Временное решение на случай переполнения
+		getline(ifst, line);
+		if (line.length() < 50) { //Проверка на переполнение - если длина Line < 100
+			strcpy_s(sp->m_Name, 50, line.c_str());
 			sp->InData(ifst);	
 		}
-		else
-		{
-			Line.resize(49);
-			strcpy_s(sp->m_Name, 50, Line.c_str());
+		else {
+			line.resize(49);
+			strcpy_s(sp->m_Name, 50, line.c_str());
 			sp->InData(ifst);
 		}
 		
-		getline(ifst, Place_P);
-		int Pass = stoi(Place_P);
-		switch (Pass) {
+		getline(ifst, place);
+		int pass = stoi(place);
+		switch (pass) {
 		case 1:
 			sp->area = shape::place::Forest;
 			break;
@@ -112,11 +114,12 @@ namespace nature {
 		}
 		return sp;
 	}
+
 	void flowers::InData(ifstream& ifst) {
-		string Num;
-		getline(ifst, Num);
-		int Pass = stoi(Num);
-		switch (Pass) {
+		string num;
+		getline(ifst, num);
+		int pass = stoi(num);
+		switch (pass) {
 		case 1:
 			this->kind = flowers::Type::Wild;
 			break;
@@ -127,6 +130,7 @@ namespace nature {
 			cout << "Unknown type\n";
 		}
 	}
+
 	void flowers::Out(ofstream& ofst) {
 		ofst << "It is flower: " << this->m_Name << "\n";
 
@@ -143,7 +147,7 @@ namespace nature {
 	}
 
 	bool shape::Compare(shape& other) {
-		return Count_letters() < other.Count_letters();
+		return CountLetters() < other.CountLetters();
 	}
 
 	void shape::OutTrees(ofstream& ofst) {
@@ -152,10 +156,10 @@ namespace nature {
 
 	// Ввод параметров кустарника ( бывшая shrub_in)
 	void shrubs::InData(ifstream& ifst) {
-		string Num;
-		getline(ifst, Num);
-		int Pass = stoi(Num);
-			switch (Pass) {
+		string num;
+		getline(ifst, num);
+		int pass = stoi(num);
+			switch (pass) {
 			case 1:
 				this->flowering = shrubs::Month::Jan;
 				break;
@@ -195,9 +199,6 @@ namespace nature {
 			default:
 				cout << "Error in InShrubs func!\n";
 			}
-		
-		
-		
 	}
 
 	// Вывод параметров кустарника (бывшая shrub_out)
@@ -265,23 +266,22 @@ namespace nature {
 
 	// Ввод параметров дерева (бывшая tree_in)
 	void trees::InData(ifstream& ifst) {
-		string Age;
-		getline(ifst, Age);
-		if (Age.length() < 50) {
-			this->m_Age = stol(Age);
+		string age;
+		getline(ifst, age);
+		if (age.length() < 50) {
+			this->m_Age = stol(age);
 		}
 		else
 		{
-			Age.resize(49);
-			this->m_Age = stol(Age);
+			age.resize(49);
+			this->m_Age = stol(age);
 		}
-		Age.clear();
+		age.clear();
 	}
 
 	// Вывод параметров дерева (бывшая tree_out)
 	void trees::Out(ofstream& ofst) {
 		ofst << "It is tree: " << this->m_Name << "\nAge: " << this->m_Age <<"\n";
-
 		
 		switch (this->area) {
 		case shape::place::Forest:
@@ -300,24 +300,15 @@ namespace nature {
 			ofst << "Incorrect area!" << endl;
 		}
 	}
-	// Ввод параметров фигуры
-	/*void shape::InData(ifstream& ifst) {
-		ifst >> growth;
-	}
-	// Вывод параметров фигуры
-	void shape::Out(ofstream& ofst) {
-		ofst << "angle = " << growth;
-	}*/
 
 	void trees::OutTrees(ofstream& ofst) {
 		Out(ofst);
 	}
 
-	int trees::Count_letters() {
+	int trees::CountLetters() {
 		int letter = 0;
 		int i = 0;
 		char alphabet[] = "bcdfghjklmnpqrstvwxz";
-		//int lent = alphabet.length();
 
 		while (this->m_Name[i] != '\0')
 		{
@@ -329,11 +320,10 @@ namespace nature {
 		return letter;
 	}
 
-	int shrubs::Count_letters() {
+	int shrubs::CountLetters() {
 		int letter = 0;
 		int i = 0;
 		char alphabet[] = "bcdfghjklmnpqrstvwxz";
-		//int lent = alphabet.length();
 
 		while (this->m_Name[i] != '\0')
 		{
@@ -345,11 +335,10 @@ namespace nature {
 		return letter;
 	}
 
-	int flowers::Count_letters() {
+	int flowers::CountLetters() {
 		int letter = 0;
 		int i = 0;
 		char alphabet[] = "bcdfghjklmnpqrstvwxz";
-		//int lent = alphabet.length();
 
 		while (this->m_Name[i] != '\0')
 		{
