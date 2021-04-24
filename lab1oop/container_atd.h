@@ -17,6 +17,10 @@ namespace nature {
 		virtual void InData(ifstream& ifst) = 0; // ввод
 		virtual void Out(ofstream& ofst) = 0; // вывод
 		virtual void OutTrees(ofstream& ofst);
+		virtual void MultiMethod(shape* other, ofstream& ofst) = 0;
+		virtual void MMTree(ofstream& ofst) = 0;
+		virtual void MMShrub(ofstream& ofst) = 0;
+		virtual void MMOut(ofstream& ofst) = 0;
 
 	};
 		/////////////////// ѕростейший контейнер на основе одномерного массива
@@ -31,6 +35,7 @@ namespace nature {
 			void Clear(); // очистка контейнера от фигур
 			container(); // инициализаци€ контейнера
 			~container() { Clear(); } // утилизаци€ контейнера
+			void MultiMethod(ofstream& ofst);
 	};
 
 		////////////////// дерево
@@ -41,6 +46,10 @@ namespace nature {
 			void InData(ifstream& ifst); // ввод
 			void Out(ofstream& ofst); // вывод
 			void OutTrees(ofstream& ofst);
+			void MultiMethod(shape* other, ofstream& ofst);
+			void MMTree(ofstream& ofst);
+			void MMShrub(ofstream& ofst);
+			void MMOut(ofstream& ofst);
 			trees() {} // создание без инициализации.
 		};
 	
@@ -52,6 +61,10 @@ namespace nature {
 			// переопредел€ем интерфейс класса
 			void InData(ifstream& ifst); // ввод
 			void Out(ofstream& ofst); // вывод
+			void MultiMethod(shape* other, ofstream& ofst);
+			void MMTree(ofstream& ofst);
+			void MMShrub(ofstream& ofst);
+			void MMOut(ofstream& ofst);
 			shrubs() {} // создание без инициализации.
 		};
 

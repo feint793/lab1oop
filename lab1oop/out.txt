@@ -1,11 +1,18 @@
 Filled container. 
-Only trees: 
-0: It is tree: elka
+Multimethod.
+
+Tree and shrub
+It is a Tree: elka
 Age: 33
-1: Unknown
-2: It is tree: dub
+
+It is Shrub: papor
+Month: February
+
+Tree and Tree
+It is a Tree: dub
 Age: 120
-3: It is tree: bereza
+
+It is a Tree: bereza
 Age: 44
-4: Unknown
+
 Now the container is empty. 

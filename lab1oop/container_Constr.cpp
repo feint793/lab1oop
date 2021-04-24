@@ -185,4 +185,92 @@ namespace nature {
 	void trees::OutTrees(ofstream& ofst) {
 		Out(ofst);
 	}
+
+	void container::MultiMethod(ofstream& ofst) {
+		ofst << "Multimethod." << endl;
+		for (int i = 0; i < len - 1; i += 2) {
+			for (int j = i + 1; j < len; j++) {
+				ofst << endl;
+				cont[i]->MultiMethod(cont[j], ofst);
+				cont[i]->MMOut(ofst);
+				cont[j]->MMOut(ofst);
+				break;
+			}
+		}
+	}
+
+	////Группа для деревьев
+	void trees::MMTree(ofstream& ofst) {
+		ofst << "Tree and Tree" << endl;
+	}
+
+	void trees::MMShrub(ofstream& ofst) {
+		ofst << "Shrub and Tree" << endl;
+	}
+
+	void trees::MultiMethod(shape* other, ofstream& ofst) {
+		other->MMTree(ofst);
+	}
+
+	void trees::MMOut(ofstream& ofst) {
+		ofst << "It is a Tree: " << this->m_Name << "\nAge: " << this->m_Age << "\n" << endl;
+	}
+
+	///Группа для кустарников
+	void shrubs::MultiMethod(shape* other, ofstream& ofst) {
+		other->MMShrub(ofst);
+	}
+
+	void shrubs::MMTree(ofstream& ofst) {
+		ofst << "Tree and shrub" << endl;
+	}
+
+	void shrubs::MMShrub(ofstream& ofst) {
+		ofst << "Shrub and Shrub" << endl;
+	}
+
+	void shrubs::MMOut(ofstream& ofst) {
+		ofst << "It is Shrub: " << this->m_Name << "\n";
+
+		switch (this->flowering) {
+		case shrubs::Month::Jan:
+			ofst << "Month: January\n";
+			break;
+		case shrubs::Month::Feb:
+			ofst << "Month: February\n";
+			break;
+		case shrubs::Month::Mar:
+			ofst << "Month: March\n";
+			break;
+		case shrubs::Month::Apr:
+			ofst << "Month: April\n";
+			break;
+		case shrubs::Month::May:
+			ofst << "Month: May\n";
+			break;
+		case shrubs::Month::Jun:
+			ofst << "Month: June\n";
+			break;
+		case shrubs::Month::Jul:
+			ofst << "Month: July\n";
+			break;
+		case shrubs::Month::Aug:
+			ofst << "Month: August\n";
+			break;
+		case shrubs::Month::Sep:
+			ofst << "Month: September\n";
+			break;
+		case shrubs::Month::Oct:
+			ofst << "Month: October\n";
+			break;
+		case shrubs::Month::Nov:
+			ofst << "Month: November\n";
+			break;
+		case shrubs::Month::Dec:
+			ofst << "Month: December\n";
+			break;
+		default:
+			cout << "Error in OutShrubs func!\n";
+		}
+	}
 } 
