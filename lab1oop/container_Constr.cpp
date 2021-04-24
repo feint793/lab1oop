@@ -349,4 +349,167 @@ namespace nature {
 		}
 		return letter;
 	}
+
+	void container::MultiMethod(ofstream& ofst) {
+		ofst << "Multimethod." << endl;
+		for (int i = 0; i < len - 1; i += 2) {
+			for (int j = i + 1; j < len; j++) {
+				ofst << endl;
+				cont[i]->MultiMethod(cont[j], ofst);
+				cont[i]->MMOut(ofst);
+				cont[j]->MMOut(ofst);
+				break;
+			}
+		}
+	}
+
+	///Группа дереьвев///
+	void trees::MMOut(ofstream& ofst) {
+		ofst << "It is tree: " << this->m_Name << "\nAge: " << this->m_Age << "\n";
+
+		switch (this->area) {
+		case shape::place::Forest:
+			ofst << "Grows in a forest" << endl;
+			break;
+		case shape::place::Garden:
+			ofst << "Grows in a garden" << endl;
+			break;
+		case shape::place::Steppe:
+			ofst << "Grows in a steppe" << endl;
+			break;
+		case shape::place::Tundra:
+			ofst << "Grows in a tundra" << endl;
+			break;
+		default:
+			ofst << "Incorrect area!" << endl;
+		}
+	}
+
+	void trees::MultiMethod(shape* other, ofstream& ofst) {
+		other->MMTree(ofst);
+	}
+
+	void trees::MMTree(ofstream& ofst) {
+		ofst << "Tree and tree" << endl;
+	}
+
+	void shrubs::MMTree(ofstream& ofst) {
+		ofst << "Tree and shrub" << endl;
+	}
+
+	void flowers::MMTree(ofstream& ofst) {
+		ofst << "Tree and flower" << endl;
+	}
+
+	///Группа кустарников///
+	void shrubs::MMOut(ofstream& ofst) {
+		ofst << "It is Shrub: " << this->m_Name << "\n";
+
+		switch (this->flowering) {
+		case shrubs::Month::Jan:
+			ofst << "Month: January\n";
+			break;
+		case shrubs::Month::Feb:
+			ofst << "Month: February\n";
+			break;
+		case shrubs::Month::Mar:
+			ofst << "Month: March\n";
+			break;
+		case shrubs::Month::Apr:
+			ofst << "Month: April\n";
+			break;
+		case shrubs::Month::May:
+			ofst << "Month: May\n";
+			break;
+		case shrubs::Month::Jun:
+			ofst << "Month: June\n";
+			break;
+		case shrubs::Month::Jul:
+			ofst << "Month: July\n";
+			break;
+		case shrubs::Month::Aug:
+			ofst << "Month: August\n";
+			break;
+		case shrubs::Month::Sep:
+			ofst << "Month: September\n";
+			break;
+		case shrubs::Month::Oct:
+			ofst << "Month: October\n";
+			break;
+		case shrubs::Month::Nov:
+			ofst << "Month: November\n";
+			break;
+		case shrubs::Month::Dec:
+			ofst << "Month: December\n";
+			break;
+		default:
+			cout << "Error in OutShrubs func!\n";
+		}
+
+		switch (this->area) {
+		case shape::place::Forest:
+			ofst << "Grows in a forest" << endl;
+			break;
+		case shape::place::Garden:
+			ofst << "Grows in a garden" << endl;
+			break;
+		case shape::place::Steppe:
+			ofst << "Grows in a steppe" << endl;
+			break;
+		case shape::place::Tundra:
+			ofst << "Grows in a tundra" << endl;
+			break;
+		default:
+			ofst << "Incorrect area!" << endl;
+		}
+	}
+
+	void shrubs::MultiMethod(shape* other, ofstream& ofst) {
+		other->MMShrub(ofst);
+	}
+
+	void trees::MMShrub(ofstream& ofst) {
+		ofst << "Shrub and tree" << endl;
+	}
+
+	void shrubs::MMShrub(ofstream& ofst) {
+		ofst << "Shrub and shrub" << endl;
+	}
+
+	void flowers::MMShrub(ofstream& ofst) {
+		ofst << "Shrub and flower" << endl;
+	}
+
+	///Группа цветов///
+	void flowers::MMOut(ofstream& ofst) {
+		ofst << "It is flower: " << this->m_Name << "\n";
+
+		switch (this->kind) {
+		case flowers::Type::Wild:
+			ofst << "Type: Home\n";
+			break;
+		case flowers::Type::Home:
+			ofst << "Type: Wild\n";
+			break;
+		default:
+			cout << "Error\n";
+		}
+	}
+
+	void flowers::MultiMethod(shape* other, ofstream& ofst)
+	{
+		other->MMFlower(ofst);
+	}
+
+	void trees::MMFlower(ofstream& ofst) {
+		ofst << "Flower and tree" << endl;
+	}
+
+	void shrubs::MMFlower(ofstream& ofst) {
+		ofst << "Flower and shrub" << endl;
+	}
+
+	void flowers::MMFlower(ofstream& ofst) {
+		ofst << "Flower and flower" << endl;
+	}
 } 

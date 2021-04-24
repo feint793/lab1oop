@@ -1,93 +1,34 @@
 Filled container. 
-Container contents 9 elements.
-0: It is tree: elka
+Multimethod.
+
+Tree and shrub
+It is tree: elka
 Age: 33
 Grows in a steppe
-Count of consonants: 2
-1: It is Shrub: papor
+It is Shrub: papor
 Month: February
 Grows in a garden
-Count of consonants: 3
-2: It is tree: dub
+
+Tree and tree
+It is tree: dub
 Age: 120
 Grows in a tundra
-Count of consonants: 2
-3: It is tree: bereza
+It is tree: bereza
 Age: 44
 Grows in a garden
-Count of consonants: 3
-4: It is Shrub: malina
+
+Shrub and flower
+It is Shrub: malina
 Month: April
 Grows in a forest
-Count of consonants: 3
-5: It is flower: rose
+It is flower: rose
 Type: Home
-Count of consonants: 2
-6: It is tree: sequoia
+
+Tree and shrub
+It is tree: sequoia
 Age: 2000
 Grows in a forest
-Count of consonants: 2
-7: It is Shrub: krapiva
+It is Shrub: krapiva
 Month: May
 Grows in a garden
-Count of consonants: 4
-8: It is flower: rose
-Type: Home
-Count of consonants: 2
-
-Container contents 9 elements.
-0: It is Shrub: krapiva
-Month: May
-Grows in a garden
-Count of consonants: 4
-1: It is tree: bereza
-Age: 44
-Grows in a garden
-Count of consonants: 3
-2: It is Shrub: malina
-Month: April
-Grows in a forest
-Count of consonants: 3
-3: It is Shrub: papor
-Month: February
-Grows in a garden
-Count of consonants: 3
-4: It is tree: dub
-Age: 120
-Grows in a tundra
-Count of consonants: 2
-5: It is flower: rose
-Type: Home
-Count of consonants: 2
-6: It is tree: sequoia
-Age: 2000
-Grows in a forest
-Count of consonants: 2
-7: It is tree: elka
-Age: 33
-Grows in a steppe
-Count of consonants: 2
-8: It is flower: rose
-Type: Home
-Count of consonants: 2
-
-Only trees: 
-Only trees: 
-0: Unknown
-1: It is tree: bereza
-Age: 44
-Grows in a garden
-2: Unknown
-3: Unknown
-4: It is tree: dub
-Age: 120
-Grows in a tundra
-5: Unknown
-6: It is tree: sequoia
-Age: 2000
-Grows in a forest
-7: It is tree: elka
-Age: 33
-Grows in a steppe
-8: Unknown
 Now the container is empty. 
